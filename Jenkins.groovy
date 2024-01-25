@@ -1,4 +1,5 @@
-any
+pipeline {
+    agent any
 
     stages {
         stage('Checkout') {
@@ -14,7 +15,8 @@ any
                 sh 'mvn clean install'
             }
         }
-  stage('Test') {
+
+        stage('Test') {
             steps {
                 // Run tests
                 sh 'mvn test'
@@ -35,7 +37,7 @@ any
             echo 'Build and deployment successful!'
         }
         failure {
-	// Actions to perform when the pipeline fails
+            // Actions to perform when the pipeline fails
             echo 'Build or deployment failed!'
         }
     }
